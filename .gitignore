@@ -4,5 +4,8 @@ notebooks/*
 # Except for .ipynb files
 !notebooks/*.ipynb
 
+# Except for image files
+!notebooks/figs
+
 # Ignore all files in the data folder
 data/*
