@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook:2022-05-03
+FROM ghcr.io/msd-live/jupyter/python-notebook:latest
 
 USER root
 
