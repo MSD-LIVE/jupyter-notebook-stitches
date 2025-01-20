@@ -10,3 +10,4 @@ RUN mkdir -p /bucket/data
 RUN rm -rf /opt/conda/lib/python3.11/site-packages/stitches/data
 RUN ln -s /bucket/data /opt/conda/lib/python3.11/site-packages/stitches/data
 
+LABEL project="GCIMS"
