@@ -68,37 +68,14 @@ jobs:
     - name: Install PyYAML
       run: pip install pyyaml
 
-    - name: Update metadata YAML file
+    - name: Run Update metadata YAML file
       env:
         REPOSITORY_NAME: ${{ github.event.repository.name }}
         PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+      run: python JupyterPackagesInventory/update_metadata.py
+
+    - name: Commit and Push Changes
       run: |
-        import yaml
-        import os
-
-        # File path to the metadata YAML file
-        file_path = 'JupyterPackagesInventory/package-metadata.yaml'
-
-        # Load the existing YAML data
-        if os.path.exists(file_path):
-            with open(file_path, 'r') as file:
-                data = yaml.safe_load(file) or {}
-        else:
-            data = {}
-        
-        # Extract package name from repository name
-        repo_name = os.getenv('REPOSITORY_NAME')
-        package_name = repo_name.split('jupyter-notebook-')[-1] if 'jupyter-notebook-' in repo_name else repo_name
-
-        # Update the YAML data
-        project_name = os.getenv('PROJECT_NAME')
-        data[package_name] = project_name
-
-        # Write the updated data back to the file
-        with open(file_path, 'w') as file:
-            yaml.dump(data, file)
-
-        # Commit and push changes
         cd JupyterPackagesInventory
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
