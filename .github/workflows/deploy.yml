@@ -57,7 +57,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: MSD-LIVE/JupyterPackagesInventory
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.ORG_TOKEN_TO_ACCESS_JUPYTERPACKAGESINVENTORY_REPO }}
         path: JupyterPackagesInventory
 
     - name: Install Python
@@ -81,4 +81,4 @@ jobs:
         git config --global user.email 'github-actions@github.com'
         git add package-metadata.yaml
         git commit -m "Update metadata for ${{ github.event.repository.name }}"
-        git push
+        git push https://x-access-token:${{ secrets.ORG_TOKEN_TO_ACCESS_JUPYTERPACKAGESINVENTORY_REPO }}@github.com/MSD-LIVE/JupyterPackagesInventory.git
