@@ -30,3 +30,7 @@ Notebook repos need to set these secrets (use *_uploader user to generate new ac
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_S3_BUCKET
+ORG_TOKEN_TO_ACCESS_JUPYTERPACKAGESINVENTORY_REPO (copy value fromm AWS secret store)
+
+And this variable 
+PROJECT (and set value to MSD-LIVE project slug like IM3 or GCIMS)
