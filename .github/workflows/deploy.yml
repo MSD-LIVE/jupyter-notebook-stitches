@@ -71,7 +71,7 @@ jobs:
     - name: Run Update metadata YAML file
       env:
         REPOSITORY_NAME: ${{ github.event.repository.name }}
-        PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+        PROJECT_NAME: ${{ vars.PROJECT }}
       run: python JupyterPackagesInventory/update_metadata.py
 
     - name: Commit and Push Changes
