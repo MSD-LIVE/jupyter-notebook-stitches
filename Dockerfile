@@ -12,4 +12,3 @@ RUN rm -rf /opt/conda/lib/python3.11/site-packages/stitches/data
 RUN ln -s /data /opt/conda/lib/python3.11/site-packages/stitches/data
 
 COPY notebooks /home/jovyan/notebooks
-ENV DATA_DIR=/data

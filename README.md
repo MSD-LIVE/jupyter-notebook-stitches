@@ -25,12 +25,27 @@ to pull from s3 if you want to test locally**
    docker compose up
    ```
 
-Notebook repos need to set these secrets (use *_uploader user to generate new access keys):  
-
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-AWS_S3_BUCKET
-ORG_TOKEN_TO_ACCESS_JUPYTERPACKAGESINVENTORY_REPO (copy value fromm AWS secret store)
 
 And this variable 
 PROJECT (and set value to MSD-LIVE project slug like IM3 or GCIMS)
+
+Current status:
+Notebook not fully function, error running last cell of preparing-input-data.ipynb because it is trying to write to the read-only input data dir:
+
+PermissionError                           Traceback (most recent call last)
+Cell In[8], line 2
+      1 # create and read in the metadata table
+----> 2 stitches.make_pangeo_table()
+      3 final_pangeo = archive = pd.read_csv(
+      4     resources.files("stitches") / "data" / "pangeo_table.csv"
+      5 )
+      7 print(final_pangeo.head())
+
+File /opt/conda/lib/python3.11/site-packages/stitches/make_pangeo_table.py:62, in make_pangeo_table()
+     60 # Write the file out
+     61 out_file = resources.files("stitches") / "data" / "pangeo_table.csv"
+---> 62 final_pangeo_table.to_csv(out_file, index=False)
+
+...
+
+PermissionError: [Errno 13] Permission denied: '/opt/conda/lib/python3.11/site-packages/stitches/data/pangeo_table.csv'
