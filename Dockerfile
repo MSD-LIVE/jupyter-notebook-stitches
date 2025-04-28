@@ -1,4 +1,4 @@
-FROM ghcr.io/msd-live/jupyter/python-notebook:dev
+FROM ghcr.io/msd-live/jupyter/python-notebook:latest
 
 USER root
 
