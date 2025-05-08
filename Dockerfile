@@ -13,6 +13,6 @@ RUN cd stitches && pip install .
 # RUN ln -s /data /opt/conda/lib/python3.11/site-packages/stitches/data
 
 # copy the pangeo_table.csv file directly where stitches expects it
-COPY data/data/pangeo_table.csv /opt/conda/lib/python3.11/site-packages/stitches/data/pangeo_table.csv
+COPY data/pangeo_table.csv /opt/conda/lib/python3.11/site-packages/stitches/data/pangeo_table.csv
 
 COPY notebooks /home/jovyan/notebooks
