@@ -3,6 +3,7 @@ FROM ghcr.io/msd-live/jupyter/python-notebook:latest
 USER root
 
 RUN git clone https://github.com/JGCRI/stitches.git stitches
+RUN pip install zarr==2.18.7 && conda install -c conda-forge zarr=2.18.7
 RUN cd stitches && pip install .
 
 # Now create a symlinked data folder inside the stitches package that links to /home/demo/data folder
