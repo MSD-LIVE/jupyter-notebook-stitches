@@ -10,5 +10,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ./data:/data
+      - ./data:/home/jovyan/data
       - ./notebooks:/home/jovyan/notebooks
+    environment:
+      - DATA_DIR=/home/jovyan/data
