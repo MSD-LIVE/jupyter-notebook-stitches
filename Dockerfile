@@ -10,6 +10,6 @@ RUN cd stitches && pip install .
 # # RUN mkdir -p /bucket/data
 # RUN mkdir -p /data
 RUN rm -rf /opt/conda/lib/python3.11/site-packages/stitches/data
-RUN ln -s ~/data /opt/conda/lib/python3.11/site-packages/stitches/data
+RUN ln -s /data /opt/conda/lib/python3.11/site-packages/stitches/data
 
 COPY notebooks /home/jovyan/notebooks
