@@ -10,6 +10,11 @@ RUN cd stitches && pip install .
 # # RUN mkdir -p /bucket/data
 # RUN mkdir -p /data
 RUN rm -rf /opt/conda/lib/python3.11/site-packages/stitches/data
-RUN ln -s /data /opt/conda/lib/python3.11/site-packages/stitches/data
+
+# using args as $DATA_DIR env doesn't seem to be set when the RUN ln -s is executed
+# defaulting args to what it should be msdlive. For local containers, can be set in docker-compose.yml to point to the correct location
+ARG DATADIR_ARG=/data
+
+RUN ln -s $DATADIR_ARG/data /opt/conda/lib/python3.11/site-packages/stitches/data
 
 COPY notebooks /home/jovyan/notebooks
