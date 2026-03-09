@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - DATADIR_ARG=/home/jovyan/data
     image: ghcr.io/msd-live/jupyter/stitches-notebook:latest
     ports:
       - "8888:8888"
